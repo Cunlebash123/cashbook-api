@@ -17,7 +17,9 @@ function loadDB() {
 
 function saveDB(db) {
   try {
-    fs.writeFileSync(DB_FILE, JSON.stringify(db));
+    var tmp = DB_FILE + ".tmp";
+    fs.writeFileSync(tmp, JSON.stringify(db));
+    fs.renameSync(tmp, DB_FILE);
   } catch (e) {}
 }
 
